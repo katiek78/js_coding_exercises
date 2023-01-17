@@ -9,6 +9,9 @@ export function getFillings(sandwich) {
 export function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
   // Your code here!
+  if (person == null) throw new Error("person must not be null");
+  if (typeof person != 'object') throw new Error("person must be an object");
+  return (person.city === 'Manchester');
 }
 
 export function getBusNumbers(people) {
