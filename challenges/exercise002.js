@@ -18,14 +18,14 @@ export function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
   if (isNaN(people)) throw new Error("people must be numeric");
-  return (Math.ceil(people/40));
+  return (Math.ceil(people / 40));
 }
 
 export function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
   // Your code here!
   if (!Array.isArray(arr)) throw new Error("arr must be an array");
-  return arr.reduce((acc,val) => val === "sheep" ? ++acc : acc,0);
+  return arr.reduce((acc, val) => val === "sheep" ? ++acc : acc, 0);
 }
 
 export function hasMPostCode(person) {

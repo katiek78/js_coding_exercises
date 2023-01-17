@@ -20,7 +20,7 @@ export function addVAT(originalPrice, vatRate) {
   if (vatRate === undefined) throw new Error("vatRate is required");
   // Add your code here!
   if (isNaN(originalPrice) || isNaN(vatRate)) throw new Error("originalPrice and vatRate must be numeric");
-  return Number((originalPrice + vatRate/100*originalPrice).toFixed(2));
+  return Number((originalPrice + vatRate / 100 * originalPrice).toFixed(2));
 }
 
 export function getSalePrice(originalPrice, reduction) {
@@ -28,14 +28,14 @@ export function getSalePrice(originalPrice, reduction) {
   if (reduction === undefined) throw new Error("reduction is required");
   // Add your code here!
   if (isNaN(originalPrice) || isNaN(reduction)) throw new Error("originalPrice and reduction must be numeric");
-  return Number((originalPrice - reduction/100*originalPrice).toFixed(2));
+  return Number((originalPrice - reduction / 100 * originalPrice).toFixed(2));
 }
 
 export function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   // Add your code here!
   if (typeof str != 'string') throw new Error("str must be a string");
-  return (str.length % 2 === 0 ? str[str.length/2-1] + str[str.length/2] : str[Math.floor(str.length/2)]);
+  return (str.length % 2 === 0 ? str[str.length / 2 - 1] + str[str.length / 2] : str[Math.floor(str.length / 2)]);
 }
 
 export function reverseWord(word) {
@@ -43,7 +43,7 @@ export function reverseWord(word) {
   // Add your code here!
   if (typeof word != 'string') throw new Error("word must be a string");
   let reversedWord = "";
-  for (let i = word.length-1; i >= 0; i--) reversedWord += word[i];
+  for (let i = word.length - 1; i >= 0; i--) reversedWord += word[i];
   return reversedWord;
 }
 
@@ -58,7 +58,7 @@ export function countLinuxUsers(users) {
   // Add your code here!
   if (!Array.isArray(users)) throw new Error("users must be an array");
   let count = 0;
-  users.forEach(user => {if (user.type === 'Linux') count++});
+  users.forEach(user => { if (user.type === 'Linux') count++ });
   return count;
 }
 
@@ -66,7 +66,7 @@ export function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   // Add your code here!
   if (!Array.isArray(scores)) throw new Error("scores must be an array");
-  return Number((scores.reduce((a,b) => a + b, 0)/scores.length).toFixed(2));
+  return Number((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2));
 }
 
 export function simpleFizzBuzz(n) {
