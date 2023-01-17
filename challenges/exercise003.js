@@ -36,4 +36,10 @@ export function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
+  if (!Array.isArray(arr1)) throw new Error("arr1 must be an array");
+  if (!Array.isArray(arr2)) throw new Error("arr2 must be an array");
+  let set1 = new Set(arr1);
+  let dupes = [];
+  set1.forEach(el => { if (arr2.indexOf(el) > -1) dupes.push(el); });
+  return dupes.sort((a, b) => a - b);
 }
