@@ -17,6 +17,8 @@ export function isFromManchester(person) {
 export function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
+  if (isNaN(people)) throw new Error("people must be numeric");
+  return (Math.ceil(people/40));
 }
 
 export function countSheep(arr) {
