@@ -1,6 +1,9 @@
 export function getFillings(sandwich) {
   if (sandwich === undefined) throw new Error("ingredients is required");
   // Your code here!
+  if (sandwich == null) throw new Error("sandwich must not be null");
+  if (typeof sandwich != 'object') throw new Error("sandwich must be an object");
+  return sandwich.fillings;
 }
 
 export function isFromManchester(person) {
