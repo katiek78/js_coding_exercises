@@ -1,11 +1,16 @@
 export function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
   // Your code here!
+  if (!Array.isArray(nums)) throw new Error("nums must be an array");
+  if (!nums.length) return [];
+  return nums.map(el => el * el);
 }
 
 export function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   // Your code here!
+  if (!Array.isArray(words)) throw new Error("words must be an array");
+  return words.map((word,idx) => idx === 0 ? word : word[0].toUpperCase() + word.slice(1)).join("");
 }
 
 export function getTotalSubjects(people) {
