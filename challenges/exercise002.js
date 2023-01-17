@@ -31,4 +31,8 @@ export function countSheep(arr) {
 export function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
   // Your code here!
+  if (person == null) throw new Error("person must not be null");
+  if (typeof person != 'object') throw new Error("person must be an object");
+  if (!person.address || !person.address.postCode) return false;
+  return (person.address.postCode[0] === "M" && (!/[A-Za-z]/.test(person.address.postCode[1])));
 }
