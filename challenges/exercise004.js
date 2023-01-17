@@ -1,6 +1,7 @@
 export function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   // Your code here
+  if (!Array.isArray(nums)) throw new Error("nums must be an array");
   let newArr = [];
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] != null & nums[i] < 1) newArr.push(nums[i]);
