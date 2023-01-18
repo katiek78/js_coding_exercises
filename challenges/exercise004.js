@@ -30,12 +30,10 @@ export function getIntegers(nums) {
 export function getCities(users) {
   if (!users) throw new Error("users is required");
   // Your code here
-  if (!Array.isArray(users)) throw new Error("users must be an array");
-  let cities = [];
-  users.forEach(el => {
-    if (el.data && el.data.city && el.data.city.displayName) cities.push(el.data.city.displayName);
+  if (!Array.isArray(users)) throw new Error("users must be an array");  
+  return users.map(el => {
+    if (el.data && el.data.city && el.data.city.displayName) return el.data.city.displayName;
   });
-  return cities;
 }
 
 export function getSquareRoots(nums) {
