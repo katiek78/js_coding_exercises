@@ -69,6 +69,13 @@ export function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
   // Your code here
+  if (!Array.isArray(sentences)) throw new Error("nums must be an array");
+  if (typeof str != 'string') throw new Error("str must be a string");
+  let newSentences = [];
+  for (let i = 0; i < sentences.length; i++) {    
+    if (typeof sentences[i] == 'string' && sentences[i].toUpperCase().includes(str.toUpperCase())) newSentences.push(sentences[i]);
+  }
+  return newSentences;
 }
 
 export function getLongestSides(triangles) {
