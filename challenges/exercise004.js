@@ -58,9 +58,7 @@ export function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
   // Your code here
   if (!Array.isArray(triangles)) throw new Error("triangles must be an array");
-  let longestSides = [];
-  triangles.forEach(el => {
-    if (Array.isArray(el)) longestSides.push(Math.max(...el.filter(subel => !isNaN(subel))));
+  return triangles.map(el => {
+    if (Array.isArray(el)) return Math.max(...el.filter(subel => !isNaN(subel)));
   });
-  return longestSides;
 }
