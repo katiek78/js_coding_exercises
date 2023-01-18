@@ -40,11 +40,9 @@ export function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
   // Your code here
   if (!Array.isArray(nums)) throw new Error("nums must be an array");
-  let squareRoots = [];
-  nums.forEach(el => {
-    if (!isNaN(el)) squareRoots.push(Number(Math.sqrt(el).toFixed(2)));
+  return nums.map(el => {
+    if (!isNaN(el)) return Number(Math.sqrt(el).toFixed(2));
   });
-  return squareRoots;
 }
 
 export function findSentencesContaining(sentences, str) {
