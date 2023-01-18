@@ -17,11 +17,7 @@ export function findVerbs(words) {
   if (!words) throw new Error("words is required");
   // Your code here
   if (!Array.isArray(words)) throw new Error("words must be an array");
-  let verbs = [];
-  words.forEach(el => {
-    if (el.substring(0, 3) === "to ") verbs.push(el);
-  });
-  return verbs;
+  return words.filter(el => el.substring(0, 3) === "to ");
 }
 
 export function getIntegers(nums) {
