@@ -32,6 +32,11 @@ export const reverseNumber = (n) => {
 export const sumArrays = (arrs) => {
   if (arrs === undefined) throw new Error("arrs is required");
   // Your code here!
+  return arrs.reduce((acc, val) => {
+    if (Array.isArray(val)) {
+      return acc + val.reduce((subacc, subval) => isNaN(subval) ? subacc : subacc + subval, 0);
+    }
+  }, 0);
 };
 
 export const arrShift = (arr) => {
