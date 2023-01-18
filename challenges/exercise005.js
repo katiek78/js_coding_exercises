@@ -11,7 +11,7 @@ export const findNextNumber = (nums, n) => {
 export const count1sand0s = (str) => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
-  let newObj = {0: 0, 1: 0};
+  let newObj = { 0: 0, 1: 0 };
   [...str].forEach(el => {
     if (el === "0") {
       newObj["0"]++;
@@ -25,6 +25,8 @@ export const count1sand0s = (str) => {
 export const reverseNumber = (n) => {
   if (n === undefined) throw new Error("n is required");
   // Your code here!
+  if (isNaN(n)) throw new Error("n must be a number");
+  return Number([...n.toString()].reverse().join().replaceAll(',', ''));
 };
 
 export const sumArrays = (arrs) => {
