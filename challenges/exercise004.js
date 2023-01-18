@@ -27,7 +27,7 @@ export function findVerbs(words) {
   if (!Array.isArray(words)) throw new Error("words must be an array");
   let verbs = [];
   for (let i = 0; i < words.length; i++) {
-    if (words[i].substring(0,3) === "to ") verbs.push(words[i]);
+    if (words[i].substring(0, 3) === "to ") verbs.push(words[i]);
   }
   return verbs;
 }
@@ -72,7 +72,7 @@ export function findSentencesContaining(sentences, str) {
   if (!Array.isArray(sentences)) throw new Error("nums must be an array");
   if (typeof str != 'string') throw new Error("str must be a string");
   let newSentences = [];
-  for (let i = 0; i < sentences.length; i++) {    
+  for (let i = 0; i < sentences.length; i++) {
     if (typeof sentences[i] == 'string' && sentences[i].toUpperCase().includes(str.toUpperCase())) newSentences.push(sentences[i]);
   }
   return newSentences;
