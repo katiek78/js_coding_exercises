@@ -25,7 +25,6 @@ export function checkIngredients(menu, ingredient) {
   if (!ingredient) throw new Error("ingredient is required");
   // Your code here!
   if (!Array.isArray(menu)) throw new Error("menu must be an array");
-  //if (typeof menu != 'string') throw new Error("ingredient must be a string");
   for (let i = 0; i < menu.length; i++) {
     if (menu[i].ingredients && menu[i].ingredients.indexOf(ingredient) > -1) return true;
   }
