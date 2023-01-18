@@ -10,11 +10,7 @@ export function findNamesBeginningWith(names, char) {
   if (!char) throw new Error("char is required");
   // Your code here
   if (!Array.isArray(names)) throw new Error("names must be an array");
-  let newNames = [];
-  names.forEach(el => {
-    if (el[0] === char) newNames.push(el);
-  });
-  return newNames;
+  return names.filter(el => el[0] === char);
 }
 
 export function findVerbs(words) {
