@@ -11,6 +11,15 @@ export const findNextNumber = (nums, n) => {
 export const count1sand0s = (str) => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
+  let newObj = {0: 0, 1: 0};
+  [...str].forEach(el => {
+    if (el === "0") {
+      newObj["0"]++;
+    } else if (el === "1") {
+      newObj["1"]++;
+    }
+  });
+  return newObj;
 };
 
 export const reverseNumber = (n) => {
