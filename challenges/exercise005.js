@@ -50,6 +50,13 @@ export const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   // Your code here!
+  if (haystack == null) throw new Error("haystack must not be null");
+  if (typeof haystack != 'object') throw new Error("haystack must be an object");
+  if (typeof searchTerm != 'string') throw new Error("searchTerm must be a string");
+  for (let key in haystack) {
+    if (haystack[key].toString().toUpperCase().includes(searchTerm.toUpperCase())) return true;
+  }
+  return false;
 };
 
 export const getWordFrequencies = (str) => {
