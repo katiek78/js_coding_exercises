@@ -8,7 +8,7 @@ export const findNextNumber = (nums, n) => {
   return (idx === nums.length - 1 || idx === -1) ? null : nums[idx + 1];
 };
 
-export const count1sand0s = (str) => {
+export const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
   let newObj = { 0: 0, 1: 0 };
@@ -22,14 +22,14 @@ export const count1sand0s = (str) => {
   return newObj;
 };
 
-export const reverseNumber = (n) => {
+export const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
   // Your code here!
   if (isNaN(n)) throw new Error("n must be a number");
   return Number([...n.toString()].reverse().join().replaceAll(',', ''));
 };
 
-export const sumArrays = (arrs) => {
+export const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   // Your code here!
   return arrs.reduce((acc, val) => {
@@ -39,7 +39,7 @@ export const sumArrays = (arrs) => {
   }, 0);
 };
 
-export const arrShift = (arr) => {
+export const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
   // Your code here!
   if (!Array.isArray(arr)) throw new Error("arr must be an array");
@@ -59,7 +59,7 @@ export const findNeedle = (haystack, searchTerm) => {
   return false;
 };
 
-export const getWordFrequencies = (str) => {
+export const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
   if (typeof str != 'string') throw new Error("str must be a string");
