@@ -24,11 +24,7 @@ export function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   // Your code here
   if (!Array.isArray(nums)) throw new Error("nums must be an array");
-  let integers = [];
-  nums.forEach(el => {
-    if (Number.isInteger(el)) integers.push(el);
-  });
-  return integers;
+  return nums.filter(el => Number.isInteger(el));
 }
 
 export function getCities(users) {
