@@ -18,8 +18,8 @@ export const sumMultiples = (arr) => {
 export const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
   if (typeof str !== 'string') throw new Error("str must be a string");
-  for(let i = 0; i < str.length; i++) {
-    if (["C", "T", "G", "A"].indexOf(str[i]) === -1) {      
+  for (let i = 0; i < str.length; i++) {
+    if (["C", "T", "G", "A"].indexOf(str[i]) === -1) {
       return false;
     }
   }
@@ -34,7 +34,7 @@ export const isValidDNA = (str) => {
 export const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
   if (!isValidDNA(str)) throw new Error("str must be a valid DNA string");
-  const DNA_PAIRS = {C: 'G', G: 'C', T: 'A', A: 'T'};
+  const DNA_PAIRS = { C: 'G', G: 'C', T: 'A', A: 'T' };
   return str.split("").map(ch => DNA_PAIRS[ch]).join("");
 };
 
@@ -45,7 +45,7 @@ export const getComplementaryDNA = (str) => {
  */
 export const isItPrime = (n) => {
   if (n === undefined) throw new Error("n is required");
-  for (let i = 2; i <= n/2; i++) {
+  for (let i = 2; i <= n / 2; i++) {
     if (n % i === 0) return false;
   }
   return true;
@@ -65,18 +65,7 @@ export const isItPrime = (n) => {
 export const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-
-  const create1DMatrix = (n, fill) => {
-    let m = [];
-    for (let i = 0; i < n; i++) {
-      m.push(fill);
-    }
-    return m;
-  }
-
-  let matrix = create1DMatrix(n, fill);
-  return matrix.map(m => create1DMatrix(n, fill));
-  
+  return new Array(n).fill(new Array(n).fill(fill));
 };
 
 /**
