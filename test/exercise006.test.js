@@ -33,3 +33,14 @@ import {
     });
   });
 
+  describe("isItPrime", () => {
+    test("returns true if the number is prime", () => {
+      expect(isItPrime("2")).toBeTruthy();    
+      expect(isItPrime("173")).toBeTruthy();   
+    });
+    test("returns false if the number is not prime", () => {
+        expect(isItPrime("4")).toBeFalsy();    
+        expect(isItPrime("253")).toBeFalsy();   
+      });    
+  });
+
