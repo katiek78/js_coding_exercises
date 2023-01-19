@@ -35,12 +35,15 @@ describe("getComplementaryDNA", () => {
 
 describe("isItPrime", () => {
     test("returns true if the number is prime", () => {
-        expect(isItPrime("2")).toBeTruthy();
-        expect(isItPrime("173")).toBeTruthy();
+        expect(isItPrime(2)).toBeTruthy();
+        expect(isItPrime(173)).toBeTruthy();
     });
     test("returns false if the number is not prime", () => {
-        expect(isItPrime("4")).toBeFalsy();
-        expect(isItPrime("253")).toBeFalsy();
+        expect(isItPrime(4)).toBeFalsy();
+        expect(isItPrime(253)).toBeFalsy();
+    });
+    test("returns false if the number is not an integer", () => {
+        expect(isItPrime(3.5)).toBeFalsy();
     });
 });
 
