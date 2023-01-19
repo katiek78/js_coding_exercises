@@ -17,6 +17,13 @@ export const sumMultiples = (arr) => {
  */
 export const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("str must be a string");
+  for(let i = 0; i < str.length; i++) {
+    if (["C", "T", "G", "A"].indexOf(str[i]) === -1) {      
+      return false;
+    }
+  }
+  return true;
 };
 
 /**
