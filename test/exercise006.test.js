@@ -59,3 +59,28 @@ describe("createMatrix", () => {
     });
 });
 
+describe("areWeCovered", () => {
+    test("returns true if at least 3 members of staff are working that day", () => {
+        expect(areWeCovered([{ name: "Jordan", rota: ["Monday", "Tuesday", "Wednesday"] },
+        { name: "Darwin", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Virgil", rota: ["Wednesday"] }], "Wednesday")).toBeTruthy();
+        expect(areWeCovered([{ name: "Jordan", rota: ["Monday", "Tuesday", "Wednesday"] },
+        { name: "Darwin", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Virgil", rota: ["Wednesday"] },
+        { name: "Cody", rota: ["Wednesday", "Thursday"] }], "Wednesday")).toBeTruthy();
+    });
+    test("returns false if 2 or fewer members of staff are working that day", () => {
+        expect(areWeCovered([{ name: "Jordan", rota: ["Monday", "Tuesday", "Wednesday"] },
+        { name: "Darwin", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Virgil", rota: ["Wednesday"] }], "Friday")).toBeFalsy();
+        expect(areWeCovered([{ name: "Jordan", rota: ["Monday", "Tuesday", "Wednesday"] },
+        { name: "Darwin", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Virgil", rota: ["Wednesday"] }], "Saturday")).toBeFalsy();
+        expect(areWeCovered([{ name: "Jordan", rota: ["Monday", "Tuesday", "Wednesday"] },
+        { name: "Darwin", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Virgil", rota: ["Wednesday"] }], "Tuesday")).toBeFalsy();
+    });
+    test("returns false if array is empty", () => {
+        expect(areWeCovered([], "Wednesday")).toBeFalsy();
+    });
+});

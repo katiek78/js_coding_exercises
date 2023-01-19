@@ -84,4 +84,16 @@ export const createMatrix = (n, fill) => {
 export const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  
+  const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  if (DAYS.indexOf(day) == -1) throw new Error("day must be a valid day of the week");
+
+  let count = 0;
+  for (let i = 0; i < staff.length; i++) {
+    if (staff[i].rota.indexOf(day) > -1) {
+      count++;
+      if (count === 3) return true;
+    }
+  }
+  return false;
 };
