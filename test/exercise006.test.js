@@ -26,3 +26,10 @@ import {
         expect(isValidDNA("CGTS333FCGATT")).toBeFalsy();
     });
   });
+
+  describe("getComplementaryDNA", () => {
+    test("returns a complementary DNA string", () => {
+      expect(getComplementaryDNA("CGTAGAGGTCCA")).toBe("GCATCTCCAGGT");    
+    });
+  });
+
