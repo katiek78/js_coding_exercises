@@ -66,6 +66,8 @@ export const isItPrime = (n) => {
 export const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  if (!Number.isInteger(n)) throw new Error("n must be an integer");
+  if (typeof fill !== 'string') throw new Error("fill must be a string");
   return Array(n).fill(Array(n).fill(fill));
 };
 
@@ -84,7 +86,7 @@ export const createMatrix = (n, fill) => {
 export const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  
+
   const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   if (DAYS.indexOf(day) == -1) throw new Error("day must be a valid day of the week");
 
