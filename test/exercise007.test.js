@@ -74,3 +74,66 @@ describe("createRange", () => {
         }).toThrow('step must be a number'); 
     });
 });
+
+describe("getScreentimeAlertList", () => {
+    const USERS = [
+         {
+            username: "diogo20",
+            name: "Diogo Jota",
+            screenTime: [
+                         { date: "2019-06-11", usage: { FIFA: 34, instagram: 22, facebook: 40} },
+                         { date: "2019-06-12", usage: { FIFA: 56, instagram: 40, facebook: 31} },
+                         { date: "2019-06-13", usage: { FIFA: 12, instagram: 15, facebook: 19} },
+                         { date: "2019-06-14", usage: { FIFA: 10, instagram: 56, facebook: 1} },
+                        ]
+           },
+           {
+            username: "thiago6alcantara",
+            name: "Thiago Alcantara",
+            screenTime: [
+                         { date: "2019-06-11", usage: { mapMyRun: 100, whatsApp: 0, facebook: 0, safari: 10} },
+                         { date: "2019-06-13", usage: { mapMyRun: 100, whatsApp: 0, facebook: 0, safari: 0} },
+                         { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+                        ]
+           },
+           {
+            username: "dArWiN",
+            name: "Darwin Nunez",
+            screenTime: [
+                         { date: "2019-06-11", usage: { mapMyRun: 50, whatsApp: 60, facebook: 0, safari: 10} },
+                         { date: "2019-06-12", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
+                         { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+                        ]
+           },
+           {
+            username: "TheNormalOne",
+            name: "Jurgen Klopp",
+            screenTime: []
+           },
+           {
+            username: "FT9",
+            name: "Fernando Torres"
+           }
+         ]
+    test("returns an array of users who have amassed at least 100 minutes of screen time on the date specified, ignoring users without screenTime data", () => {
+        expect(getScreentimeAlertList(USERS, "2019-06-11")).toEqual(['thiago6alcantara', 'dArWiN']);                  
+        expect(getScreentimeAlertList(USERS, "2019-06-12")).toEqual(['diogo20']);                  
+        expect(getScreentimeAlertList(USERS, "2019-06-13")).toEqual(['thiago6alcantara']);
+    });
+    test("returns an empty array if no user has amassed sufficient screentime on the date specified", () => {
+        expect(getScreentimeAlertList(USERS, "2019-06-14")).toEqual([]);
+    });
+    test("returns an empty array if no user has amassed any screentime on the date specified", () => {
+        expect(getScreentimeAlertList(USERS, "2019-06-16")).toEqual([]);
+    });
+    test("throws an error if users is not an array", () => {
+        expect(() => {
+             getScreentimeAlertList("foo", "2019-06-10");
+        }).toThrow('users must be an array');
+    });
+    test("throws an error if date is not a string", () => {
+        expect(() => {
+             getScreentimeAlertList(USERS, 22);
+        }).toThrow('date must be a string');
+    });
+});
