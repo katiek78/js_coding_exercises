@@ -127,7 +127,7 @@ export const hexToRGB = (hexStr) => {
   if (hexStr === undefined) throw new Error("hexStr is required");
   if (hexStr.length !== 7 || hexStr[0] !== '#') throw new Error("hexStr must be a valid hex string");
   for (let i = 1; i < 7; i++) {
-    if (!Number.isInteger(Number(hexStr[i])) && ["A", "B", "C", "D", "E", "F"].indexOf(hexStr[i]) === -1) throw new Error("hexStr must be a valid hex string");
+    if (isNaN(parseInt(hexStr[i])) && ["A", "B", "C", "D", "E", "F"].indexOf(hexStr[i]) === -1) throw new Error("hexStr must be a valid hex string");
   }
   return "rgb(" + parseInt(hexStr.slice(1, 3), 16) + "," + parseInt(hexStr.slice(3, 5), 16) + "," +
     parseInt(hexStr.slice(5, 7), 16) + ")";
