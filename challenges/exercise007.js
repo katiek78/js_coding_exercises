@@ -4,6 +4,15 @@
  */
 export const sumDigits = (n) => {
   if (n === undefined) throw new Error("n is required");
+
+  // Checked explicitly for arrays because isNan([n]) where n is an integer returns false
+  if (isNaN(n) || Array.isArray(n)) throw new Error("n must be a number");
+
+  /**
+   * Have allowed non-integers since fn definition did not specify integers.
+   * Therefore, the reduce function does not add any non-numbers (i.e. decimal point) to the total
+  */
+  return Number(n.toString().split("").reduce((acc, val) => isNaN(val) ? acc : acc + Number(val), 0));
 };
 
 /**
