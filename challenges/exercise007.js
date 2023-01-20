@@ -6,7 +6,7 @@ export const sumDigits = (n) => {
   if (n === undefined) throw new Error("n is required");
 
   // Checked explicitly for arrays because isNan([n]) where n is an integer returns false
-  if (isNaN(n) || Array.isArray(n)) throw new Error("n must be a number");
+  if (typeof n !== 'number') throw new Error("n must be a number");
 
   /**
    * Have allowed non-integers since fn definition did not specify integers.
@@ -26,10 +26,31 @@ export const sumDigits = (n) => {
 export const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-  if (step === undefined)
-    console.log(
-      "FYI: Optional step parameter not provided. Remove this check once you've handled the optional step!"
-    );
+  if (step === undefined) step = 1;
+
+  if (typeof start !== 'number') throw new Error("start must be a number");
+  if (typeof end !== 'number') throw new Error("end must be a number");
+  if (typeof step !== 'number') throw new Error("step must be a number");
+
+  // Checked for these edge cases to avoid an infinite loop
+  if (step === 0) throw new Error("step cannot be zero");
+  if (step > 0 && start > end) throw new Error("start cannot be greater than end if step is positive");
+  if (step < 0 && start < end) throw new Error("start cannot be smaller than end if step is negative");
+
+  let currentDigit = start;
+  let rangeArray = [];
+  if (step > 0) {
+    while (currentDigit <= end) {
+      rangeArray.push(currentDigit);
+      currentDigit += step;
+    }
+  } else {
+    while (currentDigit >= end) {
+      rangeArray.push(currentDigit);
+      currentDigit += step;
+    }
+  }
+  return rangeArray;
 };
 
 /**
