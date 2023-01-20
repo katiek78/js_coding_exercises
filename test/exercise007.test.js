@@ -137,3 +137,26 @@ describe("getScreentimeAlertList", () => {
         }).toThrow('date must be a string');
     });
 });
+
+describe("hexToRGB", () => {
+    test("returns a valid rgb code equivalent to the hex code represented by hexStr", () => {
+        expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+    });
+    test("throws an error if hexStr is not provided", () => {
+        expect(() => {
+             hexToRGB();
+        }).toThrow('hexStr is required');
+    });
+    test("throws an error if hexStr is not a valid hex string", () => {
+        expect(() => {
+             hexToRGB("foo");
+        }).toThrow('hexStr must be a valid hex string');
+        expect(() => {
+            hexToRGB("#AACCJJ");
+        }).toThrow('hexStr must be a valid hex string');
+    });
+});
+
+describe("findWinner", () => {
+
+});
