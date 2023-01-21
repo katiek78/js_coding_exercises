@@ -146,7 +146,6 @@ export const hexToRGB = (hexStr) => {
 export const findWinner = (board) => {
   if (board === undefined) throw new Error("board is required");
 
-  //check if valid 
   if (!Array.isArray(board)) throw new Error("board must be an array");
   if (board.length !== 3) throw new Error("board must contain 3 elements");
   board.forEach(row => {
@@ -156,10 +155,9 @@ export const findWinner = (board) => {
   //define fns for different win types
   const findHorizontalWinner = board => {
     for (let row = 0; row < 3; row++) {
-      if (board[row][0] === "X" && board[row][1] === "X" && board[row][2] === "X") return "X";
-      if (board[row][0] === "0" && board[row][1] === "0" && board[row][2] === "0") return "0";
+      const ROW_WINNER = board[row].reduce((acc, val) => acc === val ? acc : null);
+      if (ROW_WINNER) return ROW_WINNER;
     }
-    return null;
   }
   const findVerticalWinner = board => {
     for (let column = 0; column < 3; column++) {
@@ -170,7 +168,7 @@ export const findWinner = (board) => {
   }
   const findDiagonalWinner = board => {
     let middleSymbol = board[1][1];
-    if (middleSymbol === "") return;
+    if (!middleSymbol) return null;
     for (let startColumn = 0; startColumn < 3; startColumn += 2) {
       if (board[0][startColumn] ===
         middleSymbol && board[2][2 - startColumn] === middleSymbol) return middleSymbol;
@@ -178,7 +176,7 @@ export const findWinner = (board) => {
     return null;
   }
 
-  //call fns for diffetrnt win types
+  //call fns for different win types
   const HORIZONTAL_WINNER = findHorizontalWinner(board);
   if (HORIZONTAL_WINNER) return HORIZONTAL_WINNER;
   const VERTICAL_WINNER = findVerticalWinner(board);
