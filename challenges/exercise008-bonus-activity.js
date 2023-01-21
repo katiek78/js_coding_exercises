@@ -35,4 +35,6 @@ export function splitThatString(string) {
 export function addressLookUp(user) {
   if (!user) throw new Error("user is required");
   // Your solution using optional chaining here!
+  if (typeof user !== 'object' || user === null) throw new Error("user must be an object");
+  return user?.address?.postcode;
 }
