@@ -3,6 +3,8 @@
 export function printColours(colours) {
   if (!colours) throw new Error("colour is required");
   // Your solution using the spread operator here!
+  if (!Array.isArray(colours)) throw new Error("colours must be an array");
+  return [...colours];
 }
 
 export function shoppingList(list, newItem) {
