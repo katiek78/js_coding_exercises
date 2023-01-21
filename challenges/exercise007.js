@@ -152,11 +152,11 @@ export const findWinner = (board) => {
     if (row.length !== 3) throw new Error("board must contain 3 arrays of 3 elements")
   });
 
-  //define fns for different win types
+  //define different win types
   const findHorizontalWinner = board => {
     for (let row = 0; row < 3; row++) {
-      const ROW_WINNER = board[row].reduce((acc, val) => acc === val ? acc : null);
-      if (ROW_WINNER) return ROW_WINNER;
+      const row_winner = board[row].reduce((acc, val) => acc === val ? acc : null);
+      if (row_winner) return row_winner;
     }
   }
   const findVerticalWinner = board => {
@@ -176,13 +176,7 @@ export const findWinner = (board) => {
     return null;
   }
 
-  //call fns for different win types
-  const HORIZONTAL_WINNER = findHorizontalWinner(board);
-  if (HORIZONTAL_WINNER) return HORIZONTAL_WINNER;
-  const VERTICAL_WINNER = findVerticalWinner(board);
-  if (VERTICAL_WINNER) return VERTICAL_WINNER;
-  const DIAGONAL_WINNER = findDiagonalWinner(board);
-  if (DIAGONAL_WINNER) return DIAGONAL_WINNER;
-  return null;
+  //check for different win types
+  return findHorizontalWinner(board) || findVerticalWinner(board) || findDiagonalWinner(board) || null;
 
 };
