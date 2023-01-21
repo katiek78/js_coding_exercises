@@ -19,7 +19,8 @@ export function generateInitials(firstName, lastName) {
 export function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  if (isNaN(originalPrice) || isNaN(vatRate)) throw new Error("originalPrice and vatRate must be numeric");
+  if (isNaN(originalPrice) || originalPrice === null) throw new Error("originalPrice must be numeric");
+  if (isNaN(vatRate) || vatRate === null) throw new Error("vatRate must be numeric");
 
   return Number((originalPrice + vatRate / 100 * originalPrice).toFixed(2));
 }
@@ -27,8 +28,8 @@ export function addVAT(originalPrice, vatRate) {
 export function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  if (isNaN(originalPrice)) throw new Error("originalPrice must be numeric");
-  if (isNaN(reduction)) throw new Error("reduction must be numeric");
+  if (isNaN(originalPrice) || originalPrice === null) throw new Error("originalPrice must be numeric");
+  if (isNaN(reduction) || reduction === null) throw new Error("reduction must be numeric");
 
   return Number((originalPrice - reduction / 100 * originalPrice).toFixed(2));
 }
@@ -51,6 +52,7 @@ export function reverseWord(word) {
 
 export function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
+  if (!Array.isArray(words)) throw new Error("words must be an array");
 
   return words.map(word => reverseWord(word));
 }
@@ -71,7 +73,7 @@ export function getMeanScore(scores) {
 
 export function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  if (isNaN(n)) throw new Error("n must be numeric");
+  if (isNaN(n) || n === null) throw new Error("n must be numeric");
 
   if (n === 0) return 0;
   if (n % 3 === 0 && n % 5 === 0) {
