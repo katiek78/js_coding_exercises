@@ -1,5 +1,3 @@
-// Note: Be sure to check out all the exercises corresponding .md files (in docs)! 📘 👍
-
 export function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
   if (typeof word !== 'string') throw new Error("word must be a string");
