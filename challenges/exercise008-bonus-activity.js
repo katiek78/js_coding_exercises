@@ -31,6 +31,6 @@ export function splitThatString(string) {
 export function addressLookUp(user) {
   if (!user) throw new Error("user is required");
   if (typeof user !== 'object' || user === null) throw new Error("user must be an object");
-  
+
   return user?.address?.postcode;
 }
