@@ -29,8 +29,8 @@ export function getIntegers(nums) {
 
 export function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
   if (!Array.isArray(users)) throw new Error("users must be an array");
+
   return users.map(el => {
     if (el.data && el.data.city && el.data.city.displayName) return el.data.city.displayName;
   });
@@ -38,8 +38,8 @@ export function getCities(users) {
 
 export function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
   if (!Array.isArray(nums)) throw new Error("nums must be an array");
+
   return nums.map(el => {
     if (!isNaN(el)) return Number(Math.sqrt(el).toFixed(2));
   });
@@ -48,16 +48,16 @@ export function getSquareRoots(nums) {
 export function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
   if (!Array.isArray(sentences)) throw new Error("nums must be an array");
   if (typeof str != 'string') throw new Error("str must be a string");
+
   return sentences.filter(el => typeof el == 'string' && el.toUpperCase().includes(str.toUpperCase()));
 }
 
 export function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
   if (!Array.isArray(triangles)) throw new Error("triangles must be an array");
+
   return triangles.map(el => {
     if (Array.isArray(el)) return Math.max(...el.filter(subel => !isNaN(subel)));
   });
