@@ -11,6 +11,9 @@ export function shoppingList(list, newItem) {
   if (!list) throw new Error("list is required");
   if (!newItem) throw new Error("newItem is required");
   // Your solution using the spread operator here!
+  if (!Array.isArray(list)) throw new Error("list must be an array");
+  if (!Array.isArray(newItem)) throw new Error("newItem must be an array");
+  return [...list, ...newItem];
 }
 
 export function highestNumber(numbers) {
