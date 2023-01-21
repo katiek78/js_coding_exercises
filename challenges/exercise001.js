@@ -3,7 +3,7 @@
 export function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
-  if (typeof word != 'string') throw new Error("word must be a string");
+  if (typeof word !== 'string') throw new Error("word must be a string");
   return word[0].toUpperCase() + word.slice(1);
 }
 
@@ -11,7 +11,7 @@ export function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
   // Add your code here!
-  if (typeof firstName != 'string' || typeof lastName != 'string') throw new Error("firstName and lastName must be strings");
+  if (typeof firstName !== 'string' || typeof lastName !== 'string') throw new Error("firstName and lastName must be strings");
   return firstName[0] + "." + lastName[0];
 }
 
@@ -34,14 +34,14 @@ export function getSalePrice(originalPrice, reduction) {
 export function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   // Add your code here!
-  if (typeof str != 'string') throw new Error("str must be a string");
+  if (typeof str !== 'string') throw new Error("str must be a string");
   return (str.length % 2 === 0 ? str[str.length / 2 - 1] + str[str.length / 2] : str[Math.floor(str.length / 2)]);
 }
 
 export function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
-  if (typeof word != 'string') throw new Error("word must be a string");
+  if (typeof word !== 'string') throw new Error("word must be a string");
   let reversedWord = "";
   for (let i = word.length - 1; i >= 0; i--) reversedWord += word[i];
   return reversedWord;
@@ -56,10 +56,8 @@ export function reverseAllWords(words) {
 export function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   // Add your code here!
-  if (!Array.isArray(users)) throw new Error("users must be an array");
-  let count = 0;
-  users.forEach(user => { if (user.type === 'Linux') count++ });
-  return count;
+  if (!Array.isArray(users)) throw new Error("users must be an array");  
+  return users.reduce((acc, val) => val.type === 'Linux' ? ++acc : acc, 0);
 }
 
 export function getMeanScore(scores) {
