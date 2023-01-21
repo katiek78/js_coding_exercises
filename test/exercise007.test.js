@@ -111,6 +111,11 @@ describe("getScreentimeAlertList", () => {
             screenTime: []
         },
         {
+            username: "KennyD",
+            name: "Kenny Dalglish",
+            screenTime: [{date: "1978-05-24"}]
+        },
+        {
             username: "FT9",
             name: "Fernando Torres"
         }

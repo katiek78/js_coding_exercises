@@ -4,8 +4,6 @@
  */
 export const sumDigits = (n) => {
   if (n === undefined) throw new Error("n is required");
-
-  // Checked explicitly for arrays because isNan([n]) where n is an integer returns false
   if (typeof n !== 'number') throw new Error("n must be a number");
 
   /**
@@ -90,25 +88,22 @@ export const getScreentimeAlertList = (users, date) => {
 
   let screenTimeAlertList = [];
   users.forEach(user => {
-    if (user.screenTime) {
-      let userScreenTime = 0;
-      for (let i = 0; i < user.screenTime.length; i++) {
-        if (user.screenTime[i].date === date && user.screenTime[i].usage) {
-          for (let app in user.screenTime[i].usage) {
-            userScreenTime += user.screenTime[i].usage[app];
-            if (userScreenTime >= 100) {
-              if (user.username) {
-                screenTimeAlertList.push(user.username);
-                break;
-              }
+    let userScreenTime = 0;
+    for (let i = 0; i < user.screenTime?.length; i++) {
+      if (user.screenTime[i].date === date) {
+        for (let app in user.screenTime[i].usage) {
+          userScreenTime += user.screenTime[i].usage[app];
+          if (userScreenTime >= 100) {
+            if (user.username) {
+              screenTimeAlertList.push(user.username);
+              break;
             }
           }
-          break;
         }
+        break;
       }
     }
   });
-
   return screenTimeAlertList;
 };
 
@@ -126,8 +121,9 @@ export const getScreentimeAlertList = (users, date) => {
 export const hexToRGB = (hexStr) => {
   if (hexStr === undefined) throw new Error("hexStr is required");
   if (hexStr.length !== 7 || hexStr[0] !== '#') throw new Error("hexStr must be a valid hex string");
+
   for (let i = 1; i < 7; i++) {
-    if (isNaN(parseInt(hexStr[i])) && ["A", "B", "C", "D", "E", "F"].indexOf(hexStr[i]) === -1) throw new Error("hexStr must be a valid hex string");
+    if (isNaN(parseInt(hexStr[i])) && !["A", "B", "C", "D", "E", "F"].includes(hexStr[i])) throw new Error("hexStr must be a valid hex string");
   }
   return "rgb(" + parseInt(hexStr.slice(1, 3), 16) + "," + parseInt(hexStr.slice(3, 5), 16) + "," +
     parseInt(hexStr.slice(5, 7), 16) + ")";
@@ -145,7 +141,6 @@ export const hexToRGB = (hexStr) => {
  */
 export const findWinner = (board) => {
   if (board === undefined) throw new Error("board is required");
-
   if (!Array.isArray(board)) throw new Error("board must be an array");
   if (board.length !== 3) throw new Error("board must contain 3 elements");
   board.forEach(row => {
@@ -155,8 +150,8 @@ export const findWinner = (board) => {
   //define different win types
   const findHorizontalWinner = board => {
     for (let row = 0; row < 3; row++) {
-      const row_winner = board[row].reduce((acc, val) => acc === val ? acc : null);
-      if (row_winner) return row_winner;
+      const rowWinner = board[row].reduce((acc, val) => acc === val ? acc : null);
+      if (rowWinner) return rowWinner;
     }
   }
   const findVerticalWinner = board => {
@@ -167,7 +162,7 @@ export const findWinner = (board) => {
     return null;
   }
   const findDiagonalWinner = board => {
-    let middleSymbol = board[1][1];
+    const middleSymbol = board[1][1];
     if (!middleSymbol) return null;
     for (let startColumn = 0; startColumn < 3; startColumn += 2) {
       if (board[0][startColumn] ===
