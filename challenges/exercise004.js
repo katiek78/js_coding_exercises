@@ -31,9 +31,7 @@ export function getCities(users) {
   if (!users) throw new Error("users is required");
   if (!Array.isArray(users)) throw new Error("users must be an array");
 
-  return users.map(el => {
-    if (el.data && el.data.city && el.data.city.displayName) return el.data.city.displayName;
-  });
+  return users.map(el => el.data?.city?.displayName);
 }
 
 export function getSquareRoots(nums) {
