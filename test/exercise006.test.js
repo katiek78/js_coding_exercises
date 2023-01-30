@@ -67,7 +67,7 @@ describe("getComplementaryDNA", () => {
             getComplementaryDNA("FOO");
         }).toThrow('str must be a valid DNA string');
     })
-    test("throws an error if str is not a string", () => {        
+    test("throws an error if str is not a string", () => {
         expect(() => {
             getComplementaryDNA([3]);
         }).toThrow('str must be a string');
